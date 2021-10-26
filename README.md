@@ -1,2 +1,1 @@
-# -
 Tello Drone Project
