@@ -1,14 +1,14 @@
-Tello Drone Project
+#Tello Drone Project
 import KeyPressModule as kp
 
 kp.init()
-tello = tello.Tello()
+tello = tello()
 tello.connect()
 print(tello.get_battery())
 
 
 def getKeyboardInput():
-    lr, fb, up, yv = 0, 0, 0, 0,
+    lr, fb, ud, yv = 0, 0, 0, 0,
     speed = 50
     if kp.getKey("LEFT)"): lr = -speed
     elif kp.getKey("RIGHT"): lr = speed
@@ -22,8 +22,8 @@ def getKeyboardInput():
     if kp.getKey("a"): yv = speed
     elif kp.getKey("d"): yv = -speed
 
-    if kp.getKey("q"): yv = tello.land()
-    if kp.getKey("e"): yv = tello.takeoff()
+    if kp.getKey("q"): tello.land()
+    if kp.getKey("e"): tello.takeoff()
     return [lr, fb, ud, yv]
 tello.takeoff
 
