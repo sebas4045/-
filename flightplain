@@ -1,0 +1,41 @@
+from djtellopy import tello
+from time import sleep
+
+# start
+tello = Tello()
+tello.connect()
+# takeoff and move up
+tello.takeoff()
+tello.move_up(101.7)
+tello.sleep(1)
+# move forward
+tello.move_forward(152.4)
+sleep(1)
+# rotate
+tello.rotate_counter_clockwise(90)
+# move forward
+tello.move_forward(183)
+sleep(1)
+# rotate
+tello.rotate_clockwise(90)
+# down
+tello.move_down(91.4)
+tello.sleep(1)
+# forward
+tello.move_forward(91.4)
+tello.sleep(1)
+# rotate
+tello.rotate_clockwise(90)
+# move up
+tello.move_up(30.5)
+tello.sleep(1)
+# move forward
+tello.move_forward(121.9)
+tello.sleep(1)
+# rotate
+tello.rotate_counter_clockwise(90)
+# move forward
+tello.move_forward(183)
+tello.sleep(1)
+# land
+tello.land()
