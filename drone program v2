@@ -1,0 +1,10 @@
+tello = Tello()
+
+tello.connect()
+tello.takeoff()
+tello.move_forward(304.8)
+tello.move_left(304.8)
+tello.move_back(304.8)
+tello.move_right(304.8)
+tello.flip_back()
+tello.land()
