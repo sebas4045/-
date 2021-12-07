@@ -3,21 +3,25 @@ from djtellopy import tello
 import KeyPressModule as kp
 import time
 
+#initialize tello
 kp.init()
 tello = tello.Tello()
+
+#connect to tello
 tello.connect()
 print(tello.get_battery())
 
-
+#drone control with keyboard
 def getKeyboardInput():
     lr, fb, up, yv = 0, 0, 0, 0,
     speed = 50
+   
     if kp.getKey("LEFT)"): lr = -speed
     elif kp.getKey("RIGHT"): lr = speed
-
+   
     if kp.getKey("UP)"): fb = -speed
     elif kp.getKey("DOWN"): fb = -speed
-
+    
     if kp.getKey("w"): ud = speed
     elif kp.getKey("s"): ud = -speed
 
@@ -32,8 +36,9 @@ def getKeyboardInput():
          time.sleep(0.3)
 
     return [lr, fb, ud, yv]
-
-
+#takeoff
+tello.takeoff()
+#surveillance
 while True:
     vals = getKeyboardInput()
     tello.send_rc_control(vals[0], vals[1], vals[2], vals[3])
@@ -41,3 +46,5 @@ while True:
         img = cv2.resize(img, (360, 240))
         cv2.imshow("Image", img)
         cv2.waitkey(1)
+# land
+ tello.land()
